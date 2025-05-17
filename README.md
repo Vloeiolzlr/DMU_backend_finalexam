@@ -1,23 +1,39 @@
-# 🎼 BreadAria
+# BreadAria
 
 **BreadAria**는 클래식 음악의 해설을 감성적인 언어로 풀어, 매주 '빵'처럼 구워낸 메일로 전달하는 음악 콘텐츠 구독 서비스입니다.  
 작곡 배경과 감정선을 빵의 종류, 오븐 온도, 차(tea)로 비유하여 누구나 클래식을 향유할 수 있도록 돕습니다.
 
 ---
 
-## 🚀 기술 스택
+## 기술 스택
 
 | 계층 | 기술 |
 |------|------|
 | Language | Java 17 |
-| Framework | Spring Boot 3.x |
+| Framework | Spring Boot |
 | Template Engine | Mustache |
 | ORM | Spring Data JPA |
-| DB | MySQL 8.x |
+| DB | MySQL |
 | Build Tool | Gradle |
 | Mail | JavaMailSender (SMTP 설정 기반) |
 
 ---
 
-## 📂 프로젝트 구조
+## 주요 기능
 
+- 클래식 음악의 해설을 스토리텔링 형식으로 제공
+- 작곡 배경과 곡의 감정선을 빵, 오븐 온도, 차로 비유
+- 구독자에게 매주 정해진 요일에 메일 발송
+- Mustache 템플릿 기반의 감성적인 메일 디자인
+- 곡마다 유튜브/음원 링크 포함
+
+---
+
+## Vision
+
+### 클래식을 누구나 일상에서 누릴 수 있는 감성 콘텐츠로 전환하는 것.
+### 음악의 감정을 '먹고 마시는' 언어로 재해석하여 공감의 확장을 이끕니다.
+
+## Mission
+
+### “매주 한 곡, 한 조각의 감정이 구워져 당신의 메일함에 도착합니다.”
