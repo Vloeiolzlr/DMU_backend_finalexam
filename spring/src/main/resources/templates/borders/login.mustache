@@ -6,35 +6,32 @@
     <meta name="description" content="">
     <title>Order</title>
     <link rel="stylesheet" href="/css/nicepage.css" media="screen">
-    <link rel="stylesheet" href="/css/order.css" media="screen">
+    <link rel="stylesheet" href="/css/login.css" media="screen">
     <script class="u-script" type="text/javascript" src="/js/jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="/js/nicepage.js" defer=""></script>
     <meta name="referrer" content="origin">
     <meta name="theme-color" content="#478ac9">
-    <meta property="og:title" content="Order">
+    <meta property="og:title" content="Login">
     <meta property="og:type" content="website">
     <meta data-intl-tel-input-cdn-path="intlTelInput/"></head>
 <body data-path-to-root="./" data-include-products="false" class="u-body u-xl-mode" data-lang="en">
 {{>layouts/header}}
+
 <section class="u-align-center u-clearfix u-container-align-center u-container-align-left u-grey-80 u-section-1" id="order">
     <div class="u-clearfix u-sheet u-sheet-1">
-        <h2 class="u-align-left u-custom-font u-text u-text-default u-text-1" data-animation-name="customAnimationIn" data-animation-duration="2000" data-animation-delay="0">빵 주문하기 </h2>
+        <h2 class="u-align-left u-custom-font u-text u-text-default u-text-1" data-animation-name="customAnimationIn" data-animation-duration="2000" data-animation-delay="0">로그인하기</h2>
         <div class="u-expanded-width u-form u-form-1">
-            <form action="/order" method="post" class="u-clearfix u-form-spacing-30 u-form-vertical u-inner-form" name="order_form" style="padding: 0px;" redirect="true">
+            <form action="/login" method="post" class="u-clearfix u-form-spacing-30 u-form-vertical u-inner-form" name="order_form" style="padding: 0px;" redirect="true">
                 <div class="u-form-group u-form-name">
-                    <label for="name-9d90" class="u-custom-font u-label u-label-1">Name</label>
-                    <input type="text" placeholder="이름을 입력하세요" id="name-9d90" name="name" class="u-border-2 u-border-white u-custom-font u-input u-input-rectangle u-none u-radius u-input-1" required="">
-                </div>
-                <div class="u-form-email u-form-group">
-                    <label for="email-9d90" class="u-custom-font u-label u-label-2">Email</label>
-                    <input type="email" id="email-9d90" name="email" class="u-border-2 u-border-white u-custom-font u-input u-input-rectangle u-none u-radius u-input-2" required="" placeholder="이메일을 입력하세요">
+                    <label for="name-9d90" class="u-custom-font u-label u-label-1">구독한 이메일</label>
+                    <input type="text" placeholder="이름을 입력하세요" id="name-9d90" name="email" class="u-border-2 u-border-white u-custom-font u-input u-input-rectangle u-none u-radius u-input-1" required="">
                 </div>
                 <div class="u-align-center u-form-group u-form-submit">
                     <a class="u-border-5 u-border-grey-75 u-btn u-btn-submit u-button-style u-custom-font u-none u-text-white u-btn-1">제출하기</a>
                     <input type="submit" value="submit" class="u-form-control-hidden">
                 </div>
-                <div class="u-form-send-message u-form-send-success">빵이 곧 도착합니다 !</div>
-                <div class="u-form-send-error u-form-send-message">빵이 곧 도착합니다 !</div>
+                <div class="u-form-send-message u-form-send-success">확인되었습니다 !</div>
+                <div class="u-form-send-error u-form-send-message">이메일이 올바르지 않습니다 !</div>
             </form>
         </div>
     </div>

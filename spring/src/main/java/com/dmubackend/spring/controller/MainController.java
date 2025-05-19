@@ -22,6 +22,10 @@ public class MainController {
     public String order() {
         return "borders/order";
     }
+    @GetMapping("/login")
+    public String login() {
+        return "borders/login";
+    }
     @PostMapping("/trial")
     public String trial(TrialDTO trialDto) {
         System.out.println(trialDto);

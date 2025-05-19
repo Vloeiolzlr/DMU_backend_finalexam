@@ -1,0 +1,47 @@
+.u-section-1 .u-sheet-1 {
+    min-height: 669px;
+}
+
+.u-section-1 .u-text-1 {
+    --animation-custom_in-translate_x: -200px;
+    --animation-custom_in-translate_y: 0px;
+    --animation-custom_in-opacity: 0;
+    --animation-custom_in-rotate: 0deg;
+    --animation-custom_in-scale: 1;
+    font-family: SCDream3;
+    margin: 65px auto 0 0;
+}
+
+.u-section-1 .u-form-1 {
+    height: 303px;
+    margin-top: 65px;
+    margin-bottom: 60px;
+}
+
+.u-section-1 .u-label-1 {
+    font-family: SCDream3;
+}
+
+.u-section-1 .u-input-1 {
+    --radius: 30px;
+    font-family: SCDream3;
+}
+
+.u-section-1 .u-label-2 {
+    font-family: SCDream3;
+}
+
+.u-section-1 .u-input-2 {
+    --radius: 30px;
+    font-family: SCDream3;
+}
+
+.u-section-1 .u-btn-1 {
+    border-style: solid;
+    font-family: SCDream3;
+}@font-face {
+    font-family: 'SCDream3';
+    font-style: normal;
+    font-weight: 400;
+    src: url(../fonts/SCDream3.otf);
+}

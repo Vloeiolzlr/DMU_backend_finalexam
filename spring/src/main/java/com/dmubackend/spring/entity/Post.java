@@ -8,20 +8,33 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
-@Setter
+@Entity
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-public class User {
+
+public class Post {
     @Id
     @GeneratedValue
     private Long id;
 
-    private String email;
+    private String title;
 
-    private String name;
+    private String mainContent;
 
-    private boolean subscribe;
+    private String breadContent;
+
+    private String ovenContent;
+
+    private String opusContent;
+
+    private String teaContent;
+
+    private String otherContent;
+
+    private String otherTitle;
+
+    private String otherMainContent;
+
 }
