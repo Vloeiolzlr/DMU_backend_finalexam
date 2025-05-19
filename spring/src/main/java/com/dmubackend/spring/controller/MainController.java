@@ -1,11 +1,11 @@
 package com.dmubackend.spring.controller;
 
-import com.dmubackend.spring.dto.TrialDTO;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
+@RequiredArgsConstructor
 public class MainController {
 
     @GetMapping("/")
@@ -26,13 +26,16 @@ public class MainController {
     public String login() {
         return "borders/login";
     }
-    @PostMapping("/trial")
-    public String trial(TrialDTO trialDto) {
-        System.out.println(trialDto);
-        return "";
-    }
     @GetMapping("/post")
     public String post() {
         return "borders/blog";
     }
+
+    @GetMapping("/mail")
+    public String mail() {
+        return "/mail/mail";
+    }
+
+
+
 }
