@@ -18,14 +18,11 @@ public class MainController {
         return "borders/breads";
     }
 
-    @GetMapping("/order")
-    public String order() {
-        return "borders/order";
-    }
     @GetMapping("/login")
     public String login() {
         return "borders/login";
     }
+
     @GetMapping("/post")
     public String post() {
         return "borders/blog";
@@ -33,7 +30,7 @@ public class MainController {
 
     @GetMapping("/mail")
     public String mail() {
-        return "/mail/mail";
+        return "mail/mail";
     }
 
 

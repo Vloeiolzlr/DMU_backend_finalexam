@@ -12,24 +12,20 @@ import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDateTime;
 
-
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class User {
+public class TrialUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String email;
-
     private String name;
 
-    private boolean subscribe;
+    private String email;
 
     @CreatedDate
     private LocalDateTime createdAt;
-
 }

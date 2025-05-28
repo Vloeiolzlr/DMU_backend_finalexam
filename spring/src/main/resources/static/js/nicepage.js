@@ -1475,14 +1475,14 @@
                 n = e.find(".u-form-send-message-close");
             n.length || (n = i('<a href="#" class="u-form-send-message-close">x</a>'), e.append(n)), e.show(), n.one("click", (function(t) {
                 t.preventDefault(), e.hide()
-            })), form.find('input[type="submit"]').prop("disabled", false)
-        }, FormMessage.showError = function t(form) {
-            form.trigger("reset");
-            var e = form.find(".u-form-send-success"),
-                n = e.find(".u-form-send-message-close");
-            n.length || (n = i('<a href="#" class="u-form-send-message-close">x</a>'), e.append(n)), e.show(), n.one("click", (function(t) {
-                t.preventDefault(), e.hide()
-            })), form.find('input[type="submit"]').prop("disabled", false)
+            })), form.find('input[type="submit"]').prop("disabled", false)},
+        FormMessage.showError = function t(form, e, n, o) {
+            var a = e ? form.find(".u-form-send-error").clone() : form.find(".u-form-send-error");
+            e && (n && 560 === n && o && (e = "Unable to submit the Contact Form, as the submission email is not verified.\n</br></br>If you are a site administrator, please open your inbox and confirm the " + o + " email in the message. Make sure also to check your spam folder."), a.html(e), form.find(".u-form-send-error").parent().append(a));
+            var s = a.find(".u-form-send-message-close");
+            s.length || (s = i('<a href="#" class="u-form-send-message-close">x</a>'), a.append(s)), s.one("click", (function(t) {
+                t.preventDefault(), a.hide(), e && a.remove()
+            })), a.show(), form.find('input[type="submit"]').prop("disabled", false)
         }
     },
     1313: function(t, e, n) {
@@ -1781,64 +1781,44 @@
         function i() {
             return {
                 submit: function(t) {
-                    t.preventDefault(), t.stopPropagation();
-                    var form = y(this);
+                    t.preventDefault();
+                    t.stopPropagation();
+
+                    var form = y(this); // y = jQuery
                     form.find('input[type="submit"]').prop("disabled", true);
-                    var url = form.attr("action"),
-                        e = form.attr("source"),
-                        n = form.attr("method") || "POST",
-                        i = "";
-                    f(form), "email" !== e && "customphp" !== e || "true" !== form.attr("redirect") || (i = form.attr("redirect-url") && !y.isNumeric(form.attr("redirect-url")) ? form.attr("redirect-url") : form.attr("redirect-address")), "email" !== e || y(form).find('input[name="npspec-referer"]').length || y(form).append('<input type="hidden" name="npspec-referer" value="' + window.location.href + '">');
-                    var o = document.location && document.location.protocol,
-                        l;
-                    if (navigator.userAgent && navigator.userAgent.match(/firefox|fxios/i) && "file:" === o) FormMessage.showError(form, "The page is opened as a file on disk and sending emails is not supported.\nSending emails works only for pages opened from the domain.");
-                    else {
-                        var services = form.find('input[name="formServices"]'),
-                            u = Const.formActionUrl + "v2/form/process",
-                            c = url === u,
-                            h = form.find(".u-file-name[data-presigned-file-name]"),
-                            p = [];
-                        h.each((function() {
-                            p.push(y(this).attr("data-presigned-file-name"))
-                        })), services.length ? s(form, {
-                            url: u,
-                            method: "POST",
-                            redirectAddress: i,
-                            uploadedFiles: p,
-                            showSuccess: c,
-                            withFormServices: true,
-                            success: function() {
-                                c || a(form, {
-                                    url: url,
-                                    method: n,
-                                    redirectAddress: i
-                                })
+
+                    var url = form.attr("action") || "/trial"; // 자신이 설정한 백엔드 주소
+                    var method = form.attr("method") || "POST";
+
+                    // form 데이터 직렬화
+                    var formData = form.serialize();
+
+                    // AJAX 요청
+                    y.ajax({
+                        url: url,
+                        method: method,
+                        data: formData,
+                        success: function(response) {
+                            if (response.success) {
+                                FormMessage.showSuccess(form);
+                            } else {
+                                FormMessage.showError(form, response.message);
                             }
-                        }) : a(form, {
-                            url: url,
-                            method: n,
-                            redirectAddress: i,
-                            expectNoContent: true
-                        })
-                    }
-                },
-                click: function(t) {
-                    t.preventDefault(), t.stopPropagation(), y(this).find(".u-form-send-success").hide(), y(this).find(".u-form-send-error").hide();
-                    var form = y(this).closest("form");
-                    if (o(form), m(form), !w.signatureValidation(form)) return FormMessage.showError(form, "The Signature field is required"), void 0;
-                    if (!c(form)) return FormMessage.showError(form, "The File field is required"), void 0;
-                    if (!h(form)) {
-                        FormMessage.showError(form, "Unable to submit the contact form. Please accept the cookie consent for the correct recaptcha functioning.");
-                        var e = form.parents("body").find(".u-cookies-consent");
-                        return e.length && e.addClass("show"), void 0
-                    }
-                    if (("email" === form.attr("source") || "gsheets" === form.attr("source")) && !g(form)) {
-                        var n = v();
-                        if (!n) return FormMessage.showError(form, "Recaptcha Keys not found. Please add the Recaptcha keys in the Site Settings."), void 0;
-                        var i = form.find('input[name="siteKey"]');
-                        i.length ? i.val(n) : form.append('<input type="hidden" name="siteKey" value="' + n + '">')
-                    }
-                    w.addSignatureFiles(form), form.find('input[type="submit"]').click()
+                        },
+                        error: function(xhr) {
+                            // 예: 409 Conflict, 400 Bad Request, 500 등
+                            var message = "오류가 발생했습니다. 다시 시도해주세요.";
+                            if (xhr.status === 409) {
+                                message = "체험판은 한 번만 제공되며, 고객님께서는 이미 이용해주셨습니다.";
+                            } else if (xhr.responseJSON && xhr.responseJSON.message) {
+                                message = xhr.responseJSON.message;
+                            }
+                            FormMessage.showError(form, message);
+                        },
+                        complete: function() {
+                            form.find('input[type="submit"]').prop("disabled", false);
+                        }
+                    });
                 }
             }
         }
