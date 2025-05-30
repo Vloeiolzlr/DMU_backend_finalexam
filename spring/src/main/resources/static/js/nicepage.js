@@ -1804,7 +1804,13 @@
                     var form = y(this); // y = jQuery
                     form.find('input[type="submit"]').prop("disabled", true);
 
-                    var url = form.attr("action") || "/trial"; // 자신이 설정한 백엔드 주소
+                    // 어떤 버튼이 눌렸는지 확인
+                    var clickedButton = t.originalEvent.submitter;
+                    var actionType = y(clickedButton).attr("value"); // 예: "order" 또는 "trial"
+
+
+                    // actionType에 따라 요청 URL 결정
+                    var url = actionType === "order" ? "/order" : "/trial";
                     var method = form.attr("method") || "POST";
 
                     // form 데이터 직렬화

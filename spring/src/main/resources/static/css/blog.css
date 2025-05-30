@@ -17,7 +17,8 @@
 }
 
 .u-section-1 .u-group-1 {
-    min-height: 424px;
+    /*min-height: 424px; */
+    min-height: 280px;
     width: 518px;
     box-shadow: 0px 0px 20px 0 rgba(0,0,0,0.2);
     height: auto;
@@ -25,7 +26,8 @@
 }
 
 .u-section-1 .u-container-layout-1 {
-    padding: 20px 40px;
+    /*padding: 20px 40px;*/
+    padding: 20px 30px;
 }
 
 .u-section-1 .u-text-1 {
@@ -35,7 +37,7 @@
 
 .u-section-1 .u-text-2 {
     line-height: 2;
-    font-size: 1.125rem;
+    font-size: 1.3rem;
     font-family: SCDream3;
     margin: 20px 0 0;
 }
@@ -558,16 +560,16 @@
 .u-section-3 .u-container-layout-1 {
     padding: 30px 19px;
 }
-
+/*otherTitle1*/
 .u-section-3 .u-text-3 {
-    font-size: 2.25rem;
+    font-size: 1.5rem;
     font-weight: 700;
     font-family: SCDream3;
     margin: 0 1px;
 }
-
+/*otherContent1*/
 .u-section-3 .u-text-4 {
-    font-size: 0.875rem;
+    font-size: 1rem;
     line-height: 1.6;
     font-family: SCDream3;
     margin: 17px auto 0 1px;
@@ -580,16 +582,16 @@
 .u-section-3 .u-container-layout-2 {
     padding: 30px 19px;
 }
-
+/*otherTitle2*/
 .u-section-3 .u-text-5 {
-    font-size: 2.25rem;
+    font-size: 1.5rem;
     font-weight: 700;
     font-family: SCDream3;
     margin: 0 1px;
 }
-
+/*otherContent2*/
 .u-section-3 .u-text-6 {
-    font-size: 0.875rem;
+    font-size: 1rem;
     line-height: 1.6;
     font-family: SCDream3;
     margin: 17px auto 0 1px;

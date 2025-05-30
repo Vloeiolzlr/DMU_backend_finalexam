@@ -13,26 +13,16 @@ public class MainController {
         return "borders/index";
     }
 
-    @GetMapping("/breads")
-    public String breads() {
-        return "borders/breads";
-    }
 
     @GetMapping("/login")
     public String login() {
         return "borders/login";
     }
 
-    @GetMapping("/post")
-    public String post() {
-        return "borders/blog";
-    }
+
 
     @GetMapping("/mail")
     public String mail() {
         return "mail/mail";
     }
-
-
-
 }

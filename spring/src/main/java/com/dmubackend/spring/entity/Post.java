@@ -24,18 +24,27 @@ public class Post {
 
     private String mainContent;
 
+    private String breadName;
+
     private String breadContent;
+
+    private String ovenTemp;
 
     private String ovenContent;
 
     private String opusContent;
 
+    private String teaName;
+
     private String teaContent;
 
-    private String otherContent;
 
-    private String otherTitle;
+    private String otherTitle1;
 
-    private String otherMainContent;
+    private String otherMainContent1;
+
+    private String otherTitle2;
+
+    private String otherMainContent2;
 
 }

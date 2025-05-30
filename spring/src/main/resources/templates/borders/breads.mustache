@@ -20,43 +20,21 @@
         <div class="u-blog u-expanded-width u-layout-grid u-blog-1" data-items-per-page="4" data-site-sorting-prop="created" data-site-sorting-order="desc" data-blog-id="blog-1">
             <div class="u-list-control"></div>
             <div class="u-repeater u-repeater-1">
-                <div class="u-blog-control u-blog-post u-container-style u-image u-repeater-item u-shading u-image-1" data-image-width="882" data-image-height="1280"  style="background-image: url(&quot;images/emperror_img.jpg&quot;);"><!--/blog_post_image-->
+        {{#breads}}
+                <div class="u-blog-control u-blog-post u-container-style u-image u-repeater-item u-shading u-image-1" data-image-width="882" data-image-height="1280"  style="background-image: url('{{img}}');">
                     <div class="u-container-layout u-similar-container u-container-layout-1">
                         <h3 class="u-blog-control u-custom-font u-text u-text-1">
-                            <a class="u-post-header-link">​“베토벤, 전쟁 속에서 써내려간 마지막 협주곡”</a>
+                            <a class="u-post-header-link" href="/post/{{id}}" >{{title}}</a>
                         </h3>
-                        <div class="u-blog-control u-custom-font u-post-content u-text u-text-2 fr-view">“이 곡은 화려하지만, 그 화려함 이면엔 투쟁의 흔적이 있습니다.”&nbsp;</div><!--/blog_post_content-->
-                    </div>
-                </div><div class="u-blog-control u-blog-post u-container-style u-image u-repeater-item u-shading u-video-cover u-image-2" data-image-width="2000" data-image-height="1333" style="background-image: url(&quot;images/feeldown_img.jpg&quot;);"><!--/blog_post_image-->
-                    <div class="u-container-layout u-similar-container u-container-layout-2">
-                        <h3 class="u-blog-control u-custom-font u-text u-text-3">
-                            <a class="u-post-header-link">​“절망 끝에서 피어난 낭만”</a>
-                        </h3>
-                        <div class="u-blog-control u-custom-font u-post-content u-text u-text-4 fr-view">“모든 것을 잃었다고 느낀 순간, 그는 이 곡을 썼습니다.”&nbsp;</div><!--/blog_post_content-->
-                    </div>
-                </div><div class="u-blog-control u-blog-post u-container-style u-image u-repeater-item u-shading u-video-cover u-image-3" data-image-width="2000" data-image-height="1333" style="background-image: url(&quot;images/ring_img.jpg&quot;);"><!--/blog_post_image-->
-                    <div class="u-container-layout u-similar-container u-container-layout-3">
-                        <h3 class="u-blog-control u-custom-font u-text u-text-5">
-                            <a class="u-post-header-link">“사랑할 수 있는 한 사랑하라"</a>
-                        </h3>
-                        <div class="u-blog-control u-custom-font u-post-content u-text u-text-6 fr-view">"사랑은 부드럽게 시작해, 가장 깊은 곳을 건드리고, 결국 사라진다. "</div><!--/blog_post_content-->
-                    </div>
-                </div><div class="u-blog-control u-blog-post u-container-style u-image u-repeater-item u-shading u-video-cover u-image-4" data-image-width="2000" data-image-height="1333" style="background-image: url(&quot;images/moon_img.jpg&quot;);"><!--/blog_post_image-->
-                    <div class="u-container-layout u-similar-container u-container-layout-4">
-                        <h3 class="u-blog-control u-custom-font u-text u-text-7">
-                            <a class="u-post-header-link">"소리 없이 빛나는 달빛"</a>
-                        </h3>
-                        <div class="u-blog-control u-custom-font u-post-content u-text u-text-8 fr-view">"프랑스 인상주의의 밤, 조용히 구워낸 한 조각의 은은한 클래식."</div><!--/blog_post_content-->
+                        <div class="u-blog-control u-custom-font u-post-content u-text u-text-2 fr-view">{{subTitle}}&nbsp;</div>
                     </div>
                 </div>
+        {{/breads}}
             </div>
             <div class="u-list-control"></div>
         </div>
     </div>
 </section>
-
-
-
 {{>layouts/footer}}
 <section class="u-backlink u-clearfix u-grey-80"></section>
 
