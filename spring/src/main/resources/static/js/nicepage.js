@@ -1469,13 +1469,30 @@
         "use strict";
         var FormMessage = t.exports = {},
             i = n(28);
-        FormMessage.showSuccess = function t(form) {
+        FormMessage.showSuccess = function(form, message) {
             form.trigger("reset");
+
             var e = form.find(".u-form-send-success"),
                 n = e.find(".u-form-send-message-close");
-            n.length || (n = i('<a href="#" class="u-form-send-message-close">x</a>'), e.append(n)), e.show(), n.one("click", (function(t) {
-                t.preventDefault(), e.hide()
-            })), form.find('input[type="submit"]').prop("disabled", false)},
+
+            if (message) {
+                e.html(message); // 👉 백엔드 메시지를 적용
+            }
+
+            if (n.length === 0) {
+                n = $('<a href="#" class="u-form-send-message-close">x</a>');
+                e.append(n);
+            }
+
+            e.show();
+
+            n.one("click", function(t) {
+                t.preventDefault();
+                e.hide();
+            });
+
+            form.find('input[type="submit"]').prop("disabled", false);
+        };
         FormMessage.showError = function t(form, e, n, o) {
             var a = e ? form.find(".u-form-send-error").clone() : form.find(".u-form-send-error");
             e && (n && 560 === n && o && (e = "Unable to submit the Contact Form, as the submission email is not verified.\n</br></br>If you are a site administrator, please open your inbox and confirm the " + o + " email in the message. Make sure also to check your spam folder."), a.html(e), form.find(".u-form-send-error").parent().append(a));
@@ -1800,7 +1817,8 @@
                         data: formData,
                         success: function(response) {
                             if (response.success) {
-                                FormMessage.showSuccess(form);
+                                console.log(response);
+                                FormMessage.showSuccess(form, response.message);
                             } else {
                                 FormMessage.showError(form, response.message);
                             }
@@ -1809,11 +1827,11 @@
                             // 예: 409 Conflict, 400 Bad Request, 500 등
                             var message = "오류가 발생했습니다. 다시 시도해주세요.";
                             if (xhr.status === 409) {
-                                message = "체험판은 한 번만 제공되며, 고객님께서는 이미 이용해주셨습니다.";
+                                console.log(xhr.responseJSON);
                             } else if (xhr.responseJSON && xhr.responseJSON.message) {
                                 message = xhr.responseJSON.message;
                             }
-                            FormMessage.showError(form, message);
+                            FormMessage.showError(form, xhr.responseJSON.message);
                         },
                         complete: function() {
                             form.find('input[type="submit"]').prop("disabled", false);

@@ -28,7 +28,6 @@ public class TrialUserService {
             return ResponseEntity.status(HttpStatus.CONFLICT)
                     .body(Map.of("success", false, "message", "체험판은 한 번만 제공되며, 고객님께서는 이미 이용해주셨습니다"));
         }
-        System.out.println("에러");
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                 .body(Map.of("success", false, "message", "요청을 처리할 수 없습니다."));
     }
