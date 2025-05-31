@@ -9,6 +9,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Getter
 @Setter
@@ -22,7 +24,9 @@ public class Post {
 
     private String title;
 
-    private String mainContent;
+    private String subTitle;
+
+    private String img;
 
     private String breadName;
 
@@ -47,4 +51,11 @@ public class Post {
 
     private String otherMainContent2;
 
+    private String mainLink;
+
+    private String otherLink1;
+
+    private String otherLink2;
+
+    private LocalDateTime sentAt;
 }

@@ -14,6 +14,11 @@ public class PostController {
 
     @GetMapping("/post/{id}")
     public String post(@PathVariable Long id, Model model) {
-        return postService.show(id, model);
+        return postService.showPost(id, model);
+    }
+
+    @GetMapping("/breads")
+    public String breads(Model model) {
+        return postService.showList(model);
     }
 }

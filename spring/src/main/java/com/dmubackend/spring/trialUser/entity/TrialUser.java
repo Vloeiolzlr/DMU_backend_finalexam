@@ -27,5 +27,5 @@ public class TrialUser {
     private String email;
 
     @CreatedDate
-    private LocalDateTime createdAt;
+    private LocalDateTime receiveAt;
 }
