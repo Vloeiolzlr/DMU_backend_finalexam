@@ -21,6 +21,8 @@ public class HomeController {
 
 
 
+    
+    // 메일 템플릿 확인
     @GetMapping("/mail")
     public String mail() {
         return "mail/mail";

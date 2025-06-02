@@ -36745,14 +36745,14 @@ input.u-field-input.u-field-input.u-border-active-grey-70:checked {
     stroke: #404040;
 }
 .u-button-style.u-border-grey-75 {
-    border-color: #404040 !important;
-    color: #404040 !important;
+    border-color: transparent !important;
+    color: #ffffff !important;
     background-color: transparent !important;
 }
 .u-button-style.u-border-grey-75:hover,
 .u-button-style.u-border-grey-75:focus {
     border-color: transparent !important;
-    color: #3a3a3a !important;
+    color: #DCDCDC !important;
     background-color: transparent !important;
 }
 .u-border-hover-grey-75:hover,

@@ -18,6 +18,11 @@ import java.io.IOException;
 public class UserController {
     private final UserService userService;
 
+    @GetMapping("/profile")
+    public String profile() {
+        return "borders/profile";
+    }
+
     @GetMapping("/order")
     public String order() {
         return "borders/order";
