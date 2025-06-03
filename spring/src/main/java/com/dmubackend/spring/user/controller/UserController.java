@@ -4,6 +4,7 @@ package com.dmubackend.spring.user.controller;
 import com.dmubackend.spring.user.dto.UserDTO;
 import com.dmubackend.spring.user.service.UserService;
 import jakarta.mail.MessagingException;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,7 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
+
 
     @GetMapping("/profile")
     public String profile() {
@@ -32,5 +34,16 @@ public class UserController {
     @ResponseBody
     public ResponseEntity<?> save(UserDTO userDTO) throws MessagingException, IOException {
         return userService.save(userDTO);
+    }
+
+    @GetMapping("/login")
+    public String loginPage() {
+        return "borders/login";
+    }
+
+    @PostMapping("/login")
+    @ResponseBody
+    public ResponseEntity<?> login(UserDTO userDTO, HttpServletRequest request) {
+        return userService.login(userDTO, request);
     }
 }

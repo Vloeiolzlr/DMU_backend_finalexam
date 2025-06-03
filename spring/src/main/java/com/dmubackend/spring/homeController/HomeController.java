@@ -12,15 +12,6 @@ public class HomeController {
     public String index() {
         return "borders/index";
     }
-
-
-    @GetMapping("/login")
-    public String login() {
-        return "borders/login";
-    }
-
-
-
     
     // 메일 템플릿 확인
     @GetMapping("/mail")

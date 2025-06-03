@@ -1806,38 +1806,46 @@
 
                     // 어떤 버튼이 눌렸는지 확인
                     var clickedButton = t.originalEvent.submitter;
-                    var actionType = y(clickedButton).attr("value"); // 예: "order" 또는 "trial"
+                    var actionType = y(clickedButton).attr("value");
 
 
                     // actionType에 따라 요청 URL 결정
-                    var url = actionType === "order" ? "/order" : "/trial";
-                    var method = form.attr("method") || "POST";
+                    var url;
+                    if (actionType === "trial") {
+                        url = "/trial";
+                    } else if (actionType === "order") {
+                        url = "/order";
+                    } else {
+                        url = "/login";
+                    }
 
-                    // form 데이터 직렬화
+                    var method = form.attr("method") || "POST";
                     var formData = form.serialize();
 
-                    // AJAX 요청
                     y.ajax({
                         url: url,
                         method: method,
                         data: formData,
                         success: function(response) {
                             if (response.success) {
-                                console.log(response);
-                                FormMessage.showSuccess(form, response.message);
+                                if(url === "/login") {
+                                    // 로그인 성공하면 메인화면으로 이동
+                                    location.href = '/';
+                                } else {
+                                    FormMessage.showSuccess(form, response.message);
+                                }
                             } else {
                                 FormMessage.showError(form, response.message);
                             }
                         },
                         error: function(xhr) {
-                            // 예: 409 Conflict, 400 Bad Request, 500 등
                             var message = "오류가 발생했습니다. 다시 시도해주세요.";
                             if (xhr.status === 409) {
                                 console.log(xhr.responseJSON);
                             } else if (xhr.responseJSON && xhr.responseJSON.message) {
                                 message = xhr.responseJSON.message;
                             }
-                            FormMessage.showError(form, xhr.responseJSON.message);
+                            FormMessage.showError(form, message);
                         },
                         complete: function() {
                             form.find('input[type="submit"]').prop("disabled", false);
