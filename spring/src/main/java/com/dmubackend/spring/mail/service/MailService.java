@@ -3,6 +3,7 @@ package com.dmubackend.spring.mail.service;
 
 import com.dmubackend.spring.post.entity.Post;
 import com.dmubackend.spring.post.repository.PostRepository;
+import com.dmubackend.spring.token.service.TokenService;
 import com.dmubackend.spring.user.entity.User;
 import com.dmubackend.spring.user.repository.UserRepository;
 import com.github.mustachejava.DefaultMustacheFactory;
@@ -31,6 +32,7 @@ public class MailService {
     private final JavaMailSender mailSender;
     private final PostRepository postRepository;
     private final UserRepository userRepository;
+    private final TokenService tokenService;
 
     public void sendMailUser(String email) throws MessagingException, IOException {
 
@@ -49,7 +51,6 @@ public class MailService {
         File noteImage = new ClassPathResource("static/images/music_note.png").getFile();
 
         if(email == null) { // 구독 사용자들에게 주기메일 발송
-
             List<User> users = userRepository.findAll();
 
             for (User user : users) {
@@ -68,6 +69,7 @@ public class MailService {
                         "title", post.getTitle()
                 )).flush();
 
+
                 helper.setText(writer.toString(), true);
                 helper.addInline("logo", logoImage);
                 helper.addInline("music_note", noteImage);
@@ -85,13 +87,15 @@ public class MailService {
             helper.setSubject("주문하신 빵이 도착했습니다."); // 메일 제목
             helper.setFrom("vloeiolzlr@gmail.com"); // 서버 환경설정에서 정의한 보내는 사람 정보
             helper.setTo(email);
-
+            String link = tokenService.generateOneTimePostLink(post.getId());
             StringWriter writer = new StringWriter();
             mustache.execute(writer, Map.of(
-                    "link", "http://localhost:8080/post/" + post.getId(), // 메일 템플릿 텍스트 삽입
+                    "link", link, // 메일 템플릿 텍스트 삽입
                     "breadName", post.getBreadName(),
                     "title", post.getTitle()
             )).flush();
+            // System.out.println("link = " + link); Debug
+
 
             helper.setText(writer.toString(), true);
             helper.addInline("logo", logoImage);

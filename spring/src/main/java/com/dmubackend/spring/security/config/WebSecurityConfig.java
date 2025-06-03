@@ -28,7 +28,12 @@ public class WebSecurityConfig {
     @Bean // 정적 리소스에 대해 시큐리티 기능 비활성화
     public WebSecurityCustomizer configure() {
         return (web) -> web.ignoring()
-                .requestMatchers("/css/**", "/js/**", "/images/**", "/fonts/**");
+                .requestMatchers(
+                        new AntPathRequestMatcher("/css/**"),
+                        new AntPathRequestMatcher("/js/**"),
+                        new AntPathRequestMatcher("/images/**"),
+                        new AntPathRequestMatcher("/fonts/**")
+                );
     }
 
     @Bean
@@ -36,9 +41,11 @@ public class WebSecurityConfig {
         return http.authorizeHttpRequests(auth -> auth
                 .requestMatchers(
                         new AntPathRequestMatcher("/login"),
-                        new AntPathRequestMatcher("/profile"),
+                        new AntPathRequestMatcher("/breads"),
                         new AntPathRequestMatcher("/order"),
-                        new AntPathRequestMatcher("/")
+                        new AntPathRequestMatcher("/"),
+                        new AntPathRequestMatcher("/trial"),
+                        new AntPathRequestMatcher("/public/post/**")
                 ).permitAll()
                 .anyRequest().authenticated()
                 )

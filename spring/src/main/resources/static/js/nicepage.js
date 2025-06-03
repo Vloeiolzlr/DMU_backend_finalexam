@@ -1842,10 +1842,11 @@
                             var message = "오류가 발생했습니다. 다시 시도해주세요.";
                             if (xhr.status === 409) {
                                 console.log(xhr.responseJSON);
+                                FormMessage.showError(form, xhr.responseJSON.message);
                             } else if (xhr.responseJSON && xhr.responseJSON.message) {
                                 message = xhr.responseJSON.message;
                             }
-                            FormMessage.showError(form, message);
+                            FormMessage.showError(form, xhr.responseJSON.message);
                         },
                         complete: function() {
                             form.find('input[type="submit"]').prop("disabled", false);
