@@ -84,4 +84,17 @@ public class UserService {
         }
 
     }
+
+    public ResponseEntity<?> editInfo(UserDTO userDTO) {
+        User existUser = userRepository.findByEmail(userDTO.getEmail());
+        if (existUser == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(Map.of("success", false, "message", "요청을 처리할 수 없습니다."));
+        }
+        else {
+            existUser.setEmail(userDTO.getChangeEmail());
+            userRepository.save(existUser);
+            return ResponseEntity.ok(Map.of("success", true, "message", "수정이 완료되었습니다. 로그아웃 됩니다."));
+        }
+    }
 }

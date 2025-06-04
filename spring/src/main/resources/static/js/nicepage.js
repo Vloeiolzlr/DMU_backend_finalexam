@@ -1815,9 +1815,13 @@
                         url = "/trial";
                     } else if (actionType === "order") {
                         url = "/order";
-                    } else {
+                    } else if (actionType === "editInfo") {
+                        url = "/editInfo";
+                    }
+                    else {
                         url = "/login";
                     }
+                    console.log(url);
 
                     var method = form.attr("method") || "POST";
                     var formData = form.serialize();
@@ -1831,6 +1835,11 @@
                                 if(url === "/login") {
                                     // 로그인 성공하면 메인화면으로 이동
                                     location.href = '/';
+                                } else if (url === "/editInfo") {
+                                    // 정보수정 성공하면 
+                                    setTimeout(() => FormMessage.showSuccess(form, response.message), "1000");
+                                    location.href = '/logout';
+
                                 } else {
                                     FormMessage.showSuccess(form, response.message);
                                 }

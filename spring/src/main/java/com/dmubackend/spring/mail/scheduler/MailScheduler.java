@@ -13,8 +13,8 @@ import java.io.IOException;
 public class MailScheduler {
     private final MailService mailService;
 
-   /* @Scheduled(cron = "0 * * * * *")
+   @Scheduled(cron = "0 * * * * *")
     public void mailScheduler() throws MessagingException, IOException {
         mailService.sendMailUser(null);
-    }*/
+    }
 }

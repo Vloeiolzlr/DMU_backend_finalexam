@@ -11,12 +11,13 @@
     <script class="u-script" type="text/javascript" src="/js/nicepage.js" defer=""></script>
     <meta name="referrer" content="origin">
     <meta name="theme-color" content="#478ac9">
-    <meta property="og:title" content="Login">
+    <meta property="og:title" content="Profile">
     <meta property="og:type" content="website">
     <meta data-intl-tel-input-cdn-path="intlTelInput/"></head>
 <body data-path-to-root="./" data-include-products="false" class="u-body u-xl-mode" data-lang="en">
 {{>layouts/header}}
-
+{{#principal}}
+{{#date}}
 <section class="u-align-center u-clearfix u-container-align-center u-container-align-left u-grey-80 u-section-1" id="order">
     <div class="u-clearfix u-sheet u-sheet-1">
         <h2 class="u-align-left u-custom-font u-text u-text-default u-text-1" data-animation-name="customAnimationIn" data-animation-duration="2000" data-animation-delay="0">사용자 정보</h2>
@@ -24,15 +25,15 @@
             <form action="/editInfo" method="post" class="u-clearfix u-form-spacing-30 u-form-vertical u-inner-form" name="order_form" style="padding: 0px;" redirect="true">
                 <div class="u-form-group u-form-name">
                     <label for="name-9d90" class="u-custom-font u-label u-label-1">구독한 날짜</label>
-                    <input type="text" value="구독한 날짜" id="name-9d90" name="subAt" class="u-border-2 u-border-white u-custom-font u-input u-input-rectangle u-none u-radius u-input-1" readonly>
+                    <input type="text" value="{{date}}" id="name-9d90" name="subAt" class="u-border-2 u-border-white u-custom-font u-input u-input-rectangle u-none u-radius u-input-1" readonly>
                 </div>
                 <div class="u-form-group u-form-name">
                     <label for="name-9d90" class="u-custom-font u-label u-label-1">이름</label>
-                    <input type="text" value="사용자 이름" id="name-9d90" name="name" class="u-border-2 u-border-white u-custom-font u-input u-input-rectangle u-none u-radius u-input-1" readonly>
+                    <input type="text" value="{{principal.getName}}" id="name-9d90" name="name" class="u-border-2 u-border-white u-custom-font u-input u-input-rectangle u-none u-radius u-input-1" readonly>
                 </div>
                 <div class="u-form-group u-form-name">
                     <label for="name-9d90" class="u-custom-font u-label u-label-1">구독중인 이메일</label>
-                    <input type="text" value="사용중인 이메일" id="name-9d90" name="email" class="u-border-2 u-border-white u-custom-font u-input u-input-rectangle u-none u-radius u-input-1" readonly>
+                    <input type="text" value="{{principal.getEmail}}" id="name-9d90" name="email" class="u-border-2 u-border-white u-custom-font u-input u-input-rectangle u-none u-radius u-input-1" readonly>
                 </div>
                 <div class="u-form-group u-form-name">
                     <label for="name-9d90" class="u-custom-font u-label u-label-1">변경할 이메일</label>
@@ -40,15 +41,18 @@
                 </div>
 
                 <div class="u-align-center u-form-group u-form-submit">
-                    <button type="submit" class="u-border-5 u-border-grey-75 u-btn u-btn-submit u-button-style u-custom-font u-none u-text-white u-btn-1">정보 수정</button>
+                    <button type="submit" value="editInfo" class="u-border-5 u-border-grey-75 u-btn u-btn-submit u-button-style u-custom-font u-none u-text-white u-btn-1">정보 수정</button>
                     <input type="submit" value="submit" class="u-form-control-hidden">
                 </div>
-                <div class="u-form-send-message u-form-send-success">변경되었습니다 !</div>
-                <div class="u-form-send-error u-form-send-message">잠시 후에 다시 시도해주세요.</div>
+                <div class="u-form-send-message u-form-send-success"></div>
+                <div class="u-form-send-error u-form-send-message"></div>
             </form>
         </div>
     </div>
 </section>
+{{/date}}
+{{/principal}}
+
 
 
 

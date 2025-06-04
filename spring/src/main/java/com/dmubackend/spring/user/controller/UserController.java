@@ -46,4 +46,10 @@ public class UserController {
     public ResponseEntity<?> login(UserDTO userDTO, HttpServletRequest request) {
         return userService.login(userDTO, request);
     }
+
+    @PostMapping("/editInfo")
+    @ResponseBody
+    public ResponseEntity<?> editInfo(UserDTO userDTO) {
+        return userService.editInfo(userDTO);
+    }
 }

@@ -17,11 +17,11 @@
             </li>
 
             {{#principal}}
-            <li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/profile" style="padding: 53px 48px;">Profile</a></li>
+                <li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/profile" style="padding: 53px 48px;">Profile</a></li>
                 <li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/logout" style="padding: 53px 48px;">Logout</a></li>
             {{/principal}}
             {{^principal}}
-            <li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/login" style="padding: 53px 48px;">Login</a></li>
+                <li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/login" style="padding: 53px 48px;">Login</a></li>
             {{/principal}}
             </ul>
         </div>
@@ -33,12 +33,13 @@
                     </li><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link" href="/breads">Breads</a>
                     </li><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link" href="/order">Order</a>
                     </li>
-                    {{#Login}}
-                        <li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/profile" style="padding: 53px 48px;">Profile</a></li>
-                    {{/Login}}
-                    {{^Login}}
-                        <li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/login" style="padding: 53px 48px;">Login</a></li>
-                    {{/Login}}
+                    {{#principal}}
+                        <li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link " href="/profile" >Profile</a></li>
+                        <li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link " href="/logout" >Logout</a></li>
+                    {{/principal}}
+                    {{^principal}}
+                        <li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link " href="/login" >Login</a></li>
+                    {{/principal}}
                     </ul>
                 </div>
             </div>
