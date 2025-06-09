@@ -14,6 +14,13 @@ public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint 
 
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
-        response.sendRedirect("/login");
+        response.setContentType("text/html;charset=UTF-8");
+        response.getWriter().write(
+                "<script>" +
+                        "alert('[권한부족] 구독자 로그인이 필요합니다.');" +
+                        "location.href='/login';" +
+                        "</script>"
+        );
+        response.getWriter().flush();
     }
 }
