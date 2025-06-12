@@ -19,6 +19,10 @@
             {{#principal}}
                 <li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/profile" style="padding: 53px 48px;">Profile</a></li>
                 <li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/logout" style="padding: 53px 48px;">Logout</a></li>
+
+                {{#isAdmin}}
+                <li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/admin" style="padding: 53px 48px;">Admin</a></li>
+                {{/isAdmin}}
             {{/principal}}
             {{^principal}}
                 <li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/login" style="padding: 53px 48px;">Login</a></li>
